@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useCallback } from 'react'
-import { SpreadsheetRow } from '../App'
+import { SpreadsheetRow } from '../lib/types'
 import { SpreadsheetCell } from './SpreadsheetCell'
 import { Button } from './ui/button'
 import { Plus, Trash2 } from 'lucide-react'
@@ -66,6 +66,7 @@ export function SpreadsheetEditor({ rows, onRowsChange }: SpreadsheetEditorProps
   const handleCellClick = (rowIndex: number, columnKey: keyof SpreadsheetRow) => {
     setSelectedCell({ rowIndex, columnKey })
     setIsEditing(false)
+    containerRef.current?.focus()
   }
 
   const handleCellDoubleClick = (rowIndex: number, columnKey: keyof SpreadsheetRow) => {
